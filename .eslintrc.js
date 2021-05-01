@@ -1,8 +1,6 @@
 module.exports = {
   root: true,
-  ignorePatterns: [
-    '**/node_modules',
-  ],
+  ignorePatterns: ['**/node_modules'],
   extends: ['alloy', 'alloy/react', 'alloy/typescript'],
   env: {
     browser: false,
