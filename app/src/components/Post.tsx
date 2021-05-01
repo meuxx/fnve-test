@@ -29,6 +29,8 @@ const Footer = styled.div`
   width: 100%;
   color: black;
   padding: 10px;
+  overflow: auto;
+  max-height: 100%;
 `
 
 const FooterTitle = styled.div`
