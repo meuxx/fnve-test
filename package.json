@@ -1,0 +1,25 @@
+{
+  "name": "@fnve-test/root",
+  "version": "1.0.0",
+  "repository": "git@github.com:meuxx/fnve-test.git",
+  "author": "Pablo Maceda <contact@pablo.dev>",
+  "private": true,
+  "workspaces": [
+    "api"
+  ],
+  "scripts": {
+    "lint": "eslint --ext js,jsx,ts,tsx .",
+    "lint:fix": "yarn lint --fix",
+    "format": "prettier --list-different './**/*.{js,jsx,json,yml,yaml,css,less,scss,ts,tsx,md,graphql,mdx}'",
+    "format:fix": "yarn format --write"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
+    "eslint": "^7.25.0",
+    "eslint-config-alloy": "^4.1.0",
+    "eslint-plugin-react": "^7.23.2",
+    "prettier": "^2.2.1",
+    "typescript": "^4.2.4"
+  }
+}
