@@ -12,6 +12,9 @@ interface Photo {
 
 // TODO implement pagination
 const POSTS_PER_PAGE = 30
+const MAX_COMMENTS_PER_POST = 5
+
+// TODO generate all the data on boot, store on memory
 
 const getPosts = async (): Promise<Post[]> => {
   const response = await axios.get<Photo[]>(
@@ -30,16 +33,19 @@ const getPosts = async (): Promise<Post[]> => {
   )
 }
 
+const generateComment = (postId: number, index: number): PostComment => {
+  return {
+    id: postId * 100 + index,
+    postId,
+    author: faker.internet.userName(),
+    content: faker.lorem.paragraph(),
+  }
+}
+
 const getComments = async (postId: number): Promise<PostComment[]> => {
-  // TODO generate all the data on boot, store on memory
-  return [
-    {
-      id: faker.datatype.number(30),
-      postId,
-      author: faker.internet.userName(),
-      content: faker.lorem.paragraph(),
-    },
-  ]
+  return Array.from({
+    length: faker.datatype.number(MAX_COMMENTS_PER_POST + 1) - 1,
+  }).map((_, index) => generateComment(postId, index))
 }
 
 export { getPosts, getComments }
