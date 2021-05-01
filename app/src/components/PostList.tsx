@@ -4,6 +4,11 @@ import styled from 'styled-components/macro'
 import { Post as PostType } from '../types'
 import Post from './Post'
 
+
+const Title = styled.h1`
+  text-align: center;
+`
+
 const PostContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -21,7 +26,7 @@ const PostList: React.FC = () => {
 
   return (
     <>
-      <h1>Posts</h1>
+      <Title>Photos</Title>
       <PostContainer>
         {data?.map((post) => (
           <Post key={post.id} data={post} />
