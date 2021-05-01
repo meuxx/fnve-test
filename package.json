@@ -9,6 +9,9 @@
     "app"
   ],
   "scripts": {
+    "start": "concurrently --kill-others --names 'api,app' -c 'bgBlue.bold,bgMagenta.bold' 'yarn --silent start:api' 'yarn --silent start:app'",
+    "start:api": "yarn --silent --cwd api start",
+    "start:app": "yarn --silent --cwd app start",
     "lint": "eslint --ext js,jsx,ts,tsx .",
     "lint:fix": "yarn lint --fix",
     "format": "prettier --list-different './**/*.{js,jsx,json,yml,yaml,css,less,scss,ts,tsx,md,graphql,mdx}'",
@@ -17,6 +20,7 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "@typescript-eslint/parser": "^4.22.0",
+    "concurrently": "^6.0.2",
     "eslint": "^7.25.0",
     "eslint-config-alloy": "^4.1.0",
     "eslint-plugin-react": "^7.23.2",
