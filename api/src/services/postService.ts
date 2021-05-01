@@ -1,5 +1,6 @@
 import axios from 'axios'
-import { Post } from '../types'
+import { Post, PostComment } from '../types'
+import faker from 'faker'
 
 interface Photo {
   albumId: number
@@ -26,4 +27,16 @@ const getPosts = async (): Promise<Post[]> => {
   )
 }
 
-export { getPosts }
+const getComments = async (postId: number): Promise<PostComment[]> => {
+  // TODO generate all the data on boot, store on memory
+  return [
+    {
+      id: faker.datatype.number(30),
+      postId,
+      author: faker.internet.userName(),
+      content: faker.lorem.paragraph(),
+    },
+  ]
+}
+
+export { getPosts, getComments }

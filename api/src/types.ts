@@ -4,3 +4,10 @@ export interface Post {
   pictureUrl: string
   thumbnailUrl: string
 }
+
+export interface PostComment {
+  id: number
+  postId: number
+  author: string
+  content: string
+}
