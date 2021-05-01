@@ -1,36 +1,44 @@
 import React from 'react'
-import { createGlobalStyle } from 'styled-components/macro'
+import styled, { createGlobalStyle } from 'styled-components/macro'
+import { normalize } from 'styled-normalize'
+import { QueryClient, QueryClientProvider } from 'react-query'
+
+import PostList from './components/PostList'
 
 const GlobalStyle = createGlobalStyle`
-  .App {
-    text-align: center;
-  }
-  
-  .App-header {
-    background-color: #282c34;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
-  }
+  ${normalize}
 
+  *, *:before, *:after {
+    box-sizing: border-box;
+  }
 `
+
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+`
+
+const Content = styled.main`
+  flex: 0 0 100%;
+  background-color: #282c34;
+  color: white;
+  max-width: 1180px;
+  display: block;
+`
+
+const queryClient = new QueryClient()
 
 function App() {
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
       <GlobalStyle />
-      <div className="App">
-        <header className="App-header">
-          <p>
-            Edit <code>src/App.tsx</code> and save to reload.
-          </p>
-        </header>
-      </div>
-    </>
+      <Container>
+        <Content>
+          <PostList />
+        </Content>
+      </Container>
+    </QueryClientProvider>
   )
 }
 

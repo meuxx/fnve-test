@@ -10,12 +10,15 @@ interface Photo {
   thumbnailUrl: string
 }
 
+// TODO implement pagination
+const POSTS_PER_PAGE = 30
+
 const getPosts = async (): Promise<Post[]> => {
   const response = await axios.get<Photo[]>(
     'https://jsonplaceholder.typicode.com/photos'
   )
 
-  return response.data.map(
+  return response.data.slice(0, POSTS_PER_PAGE).map(
     (photo): Post => {
       return {
         id: photo.id,
