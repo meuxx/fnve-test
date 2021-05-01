@@ -15,9 +15,9 @@ const PostList: React.FC = () => {
     fetch('/v1/post').then((res) => res.json())
   )
 
-  if (isLoading) return <>Loading...</>
+  if (isLoading) return <div>Loading...</div>
 
-  if (error) return <>An error has occurred: {error.message}</>
+  if (error) return <div>An error has occurred: {error.message}</div>
 
   return (
     <>

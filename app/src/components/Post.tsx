@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Post as PostType } from '../types'
 import styled from 'styled-components/macro'
+import PostComments from './PostComments'
 
 // TODO move styles to a separate file
 const Container = styled.div`
@@ -9,7 +10,7 @@ const Container = styled.div`
   position: relative;
 
   &:hover > div {
-    display: block;
+    display: flex;
   }
 `
 
@@ -20,20 +21,44 @@ const Image = styled.img`
 
 const Footer = styled.div`
   display: none;
+  flex-direction: column;
+  gap: 10px;
   position: absolute;
   bottom: 0;
   background-color: white;
   width: 100%;
   color: black;
-  padding: 2px;
+  padding: 10px;
+`
+
+const FooterTitle = styled.div`
+  display: flex;
+  font-weight: bold;
+`
+
+const ShowCommentsButton = styled.button`
+  border: none;
+  background-color: lightgray;
+  padding: 5px;
+  border-radius: 3px;
 `
 
 const Post: React.FC<{ data: PostType }> = ({ data }) => {
+  const [showComments, setShowComments] = useState(false)
+
   return (
     <Container>
       <Image src={data.thumbnailUrl} alt="" />
       <Footer>
-        <span>{data.title}</span>
+        <FooterTitle>
+          <div>{data.title}</div>
+
+          <ShowCommentsButton onClick={() => setShowComments(!showComments)}>
+            {showComments ? 'Hide comments' : 'Show Comments'}
+          </ShowCommentsButton>
+        </FooterTitle>
+
+        {showComments && <PostComments postId={data.id} />}
       </Footer>
     </Container>
   )

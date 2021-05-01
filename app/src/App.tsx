@@ -27,7 +27,15 @@ const Content = styled.main`
   display: block;
 `
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      refetchOnMount: false,
+      retry: false,
+    },
+  },
+})
 
 function App() {
   return (
