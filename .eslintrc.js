@@ -3,7 +3,7 @@ module.exports = {
   ignorePatterns: ['**/node_modules'],
   extends: ['alloy', 'alloy/react', 'alloy/typescript'],
   env: {
-    browser: false,
+    browser: true,
     node: true,
     jest: true,
   },

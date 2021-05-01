@@ -1,9 +1,9 @@
 {
   "name": "@fnve-test/api",
   "version": "1.0.0",
+  "private": true,
   "repository": "git@github.com:meuxx/fnve-test.git",
   "author": "Pablo Maceda <contact@pablo.dev>",
-  "private": true,
   "scripts": {
     "start": "nodemon src/index.ts"
   },
